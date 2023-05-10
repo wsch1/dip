@@ -53,7 +53,7 @@ public class TestBuyCredit {
             "Должен появится в базе данных ПОКУПОК В КРЕДИТ со статусом ОТКЛОНЕНО. Так же UI проверка на отказ от банка")
     @Test
     public void shouldAppearInTheDatabaseCreditWithStatusDeclined() {
-        //Удаление всех записей в бд из таблицы покупка в кредит
+
         Sql.deleteAllStringsForCreditRequestEntity();
         Dashboard.clickButtonBuyCreditCard();
         enteringInputFields(
@@ -64,7 +64,6 @@ public class TestBuyCredit {
                 validDataWithCardDeclined.cvc
         );
         buyingTour.clickOrderButton();
-        //Проверка уведомления об отказе.
         buyingTour.rejected();
         assertEquals("DECLINED", Sql.checkStatusCredit());
 
